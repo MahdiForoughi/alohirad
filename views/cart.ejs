@@ -1,17 +1,48 @@
-<h1>Your Cart</h1>
-<ul>
-  <% if (cart && cart.items.length > 0) { %>
-    <% cart.items.forEach(item => { %>
-      <li>
-        <h2><%= item.productId.name %></h2>
-        <p>Quantity: <%= item.quantity %></p>
-        <p>Price: $<%= item.productId.price %></p>
-      </li>
-    <% }) %>
-    <p>Total Price: $<%= cart.totalPrice %></p>
-  <% } else { %>
-    <p>Your cart is empty</p>
-  <% } %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h2>سبد خرید شما</h2>
+    <br/>
+    <br/>
+    <br/>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">نام محصول</th>
+            <th scope="col">قیمت واحد</th>
+            <th scope="col">تعداد</th>
+            <th scope="col">عملیات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (cart && cart.items.length > 0) { %>
+            <% cart.items.forEach(item => { %>
+            <tr>
+              <td><%= item.productId.name %></td>
+              <td><%= item.productId.price %></td>
+              <td><%= item.quantity %></td>
+              <td>
+                <form action="/remove-from-cart/<%= item.productId._id %>" method="POST">
+                  <button type="submit" class="btn-close"></button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    <p>مبلغ کل: <%= cart.totalPrice %></p>
+    <% } else { %>
+    <p>سبد شما خالی است!</p>
+    <% } %>
 
-<a href="/">Continue Shopping</a>
+    <a href="/" class="btn btn-dark">بازگشت به صفحه محصولات</a>
+
+    </div>
+  </div>
+</div>

@@ -1,15 +1,25 @@
-<h1>Products</h1>
-<ul>
-  <% products.forEach(product => { %>
-    <li>
-      <h2><%= product.name %></h2>
-      <p><%= product.description %></p>
-      <p>$<%= product.price %></p>
-      <form action="/add-to-cart/<%= product._id %>" method="POST">
-        <button type="submit">Add to Cart</button>
-      </form>
-    </li>
-  <% }) %>
-</ul>
-
-<a href="/cart">View Cart</a>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <h1>محصولات</h1>
+            <div class="col">
+                <% products.forEach(product => { %> 
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h3><%= product.name %></h3>
+                    <p><%= product.description %></p>
+                    <p>$<%= product.price %></p>
+                    <form action="/add-to-cart/<%= product._id %>" method="POST">
+                        <button type="submit" class="btn btn-dark">افزودن به سبد خرید</button>
+                    </form>
+                <% }) %>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <hr>
+        <a href="/cart" class="btn btn-dark">رفتن به سبد خرید</a>
+        </div>
+    </div>
+</div>
